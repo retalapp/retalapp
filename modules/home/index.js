@@ -1,11 +1,11 @@
 class Home {
-	constructor() {
-	}
+
+	constructor() {}
 
 	willApp(app) {
 		
 		app.get('/', (req, res) => {
-			res.render('index', {'title': 'hello front'})
+			res.render('index', {'title': 'hello front'});
 		})
 
 		return app
@@ -14,7 +14,7 @@ class Home {
 	willAdmin(app) {
 		
 		app.get('/', (req, res) => {
-			res.render('index', {'title': 'hello admin'})
+			res.render('index', {'title': 'hello admin'});
 		})
 
 		return app
@@ -23,12 +23,12 @@ class Home {
 	willApi(app) {
 
 		app.get('/', (req, res) => {
-			res.render('index', {'title': 'hello api'})
+			res.render('index', {'title': 'hello api'});
 		})
 
-		return app
+		return app;
 	}
 }
 
-Home.__configurable = true
-module.exports = Home
+Home.__configurable = true;
+module.exports = Home;

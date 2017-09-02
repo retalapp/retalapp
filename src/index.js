@@ -593,4 +593,4 @@ class Retalapp {
   }
 }
 
-module.exports = new Retalapp();
+module.exports = require('../config')(new Retalapp());
