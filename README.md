@@ -10,6 +10,8 @@ To get your Retalapp project is hightly recommended initialize a new npm project
 
 NodeJS >= 4.4
 
+Mongodb local server running follow [the installing steps](https://docs.mongodb.com/manual/administration/install-community/)
+
 ### Installing
 
 Using Retalapp in your project
@@ -50,6 +52,10 @@ npm start
 
 Now you can open your localhost to test
 
+Front: [http://localhost:2222](http://localhost:2222)
+
+Admin: [http://localhost:2222/admin](http://localhost:2222/admin)
+
 ## Running the tests
 
 Clone the repo and run 
@@ -74,8 +80,8 @@ See also the list of [contributors](https://github.com/retalapp/retalapp/contrib
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Motivations
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Create petencial reusable logic and data models
+* Only istalling a package be enable to use a big part of logic eg:. a blog module, users module, wiki, shipping etc...
+* Reuse code in different project using the seteable modules
