@@ -102,9 +102,7 @@ retalapp.module('admin', '#core/modules/admin', {
 
 /**
  * Your custom module
-*/
-/**
- * Nw file path: ./mymodules/mimoduledir/index.js
+ * New file path: ./mymodules/mimoduledir/index.js
  class MyModule {
 
 	constructor() {
@@ -114,13 +112,11 @@ retalapp.module('admin', '#core/modules/admin', {
 	}
 
 	willApp(app) {
-		
 		// this url will be accesible from http://localhost:2222/mymodule
 		app.get('/', (req, res) => {
 			res.render('index', {'title': this.parameterofmymodule});
 		})
-
-		return app
+		return app;
 	}
 };
 
