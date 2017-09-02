@@ -82,6 +82,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Motivations
 
-* Create petencial reusable logic and data models
+* Create petencial reusable logic and data models.
 * Only istalling a package be enable to use a big part of logic eg:. a blog module, users module, wiki, shipping etc...
 * Reuse code in different project using the seteable modules.
