@@ -104,22 +104,20 @@ retalapp.module('admin', '#core/modules/admin', {
  * Your custom module
  * New file path: ./mymodules/mimoduledir/index.js
  class MyModule {
+  constructor() {
+   this.parameterofmymodule = 'param1 default';
+   this.parameterofmymodule1 = 'param2 default';
+   this.parameterofmymodule2 = '';
+  }
 
-	constructor() {
-		this.parameterofmymodule = 'param1 default';
-		this.parameterofmymodule1 = 'param2 default';
-		this.parameterofmymodule2 = '';
-	}
-
-	willApp(app) {
-		// this url will be accesible from http://localhost:2222/mymodule
-		app.get('/', (req, res) => {
-			res.render('index', {'title': this.parameterofmymodule});
-		})
-		return app;
-	}
+  willApp(app) {
+  // this url will be accesible from http://localhost:2222/mymodule
+   app.get('/', (req, res) => {
+    res.render('index', {'title': this.parameterofmymodule});
+   })
+   return app;
+  }
 };
-
 MyModule.__configurable = true;
 module.exports = MyModule;
 */
