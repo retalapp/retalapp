@@ -1,0 +1,43 @@
+.content-wrapper, .right-side {
+  background-color: #fff;
+}
+.content-header>.breadcrumb {
+  float: none; 
+  position: static; 
+  padding: 4px 0;
+}
+.form-group {
+  width: 400px
+}
+.alert {
+  border-radius: 0;
+}
+.content-header>.breadcrumb {
+  padding: 0 0 10px 0;
+  font-size: 14px;
+}
+.form-group {
+  width: 400px;
+  max-width: 100%;
+}
+pre {
+  background-color: transparent;
+  border: 0;
+  font-size: 16px;
+}
+nav.navbar {
+  text-align: center;
+}
+nav.navbar > h1 {
+  display: inline-block;
+  font-size: 27px;
+  margin: 10px 0;
+}
+@media (max-width: 991px) {
+  .content-header > .breadcrumb {
+    background: transparent;
+  }
+}
+.content-header > .breadcrumb {
+  padding: 0;
+}
