@@ -123,7 +123,7 @@ module.exports = MyModule;
 */
 // So you can access to the urls that your module register in the willApp method
 
-// if your module is in te node_modules directory onlu set the name of the package as source
+// if your module is in te node_modules directory only set the name of the package as source
 // retalapp.module('mymodule', 'my-module-in-npm', {
 retalapp.module('mymodule', __dirname + '/mymodules/mimoduledir/index.js', {
   parameterofmymodule: 'Good morning!',
