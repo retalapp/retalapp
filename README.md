@@ -1,4 +1,4 @@
-# Retalapp
+# Retalapp [![Build Status](https://travis-ci.org/retalapp/retalapp.svg?branch=master)](https://travis-ci.org/retalapp/retalapp)
 
 A NodeJS CMS riented to developers
 
