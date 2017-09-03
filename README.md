@@ -8,7 +8,7 @@ To get your Retalapp project is hightly recommended initialize a new npm project
 
 ### Prerequisites
 
-NodeJS >= 4.4
+NodeJS >= 6.0.0
 
 Mongodb local server running follow [the installing steps](https://docs.mongodb.com/manual/administration/install-community/)
 
