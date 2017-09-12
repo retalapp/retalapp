@@ -16,7 +16,7 @@ class Admin {
 	willAdmin(app) {
 		
 		app.get('/', (req, res) => {
-			this.message('warning', 'This is a warning session message');
+			// this.message('warning', 'This is a warning session message');
 			// this.message('info', 'This is a info session message');
 			// this.message('danger', 'This is a danger session message');
 			// this.message('success', 'This is a success session message');
@@ -51,15 +51,57 @@ class Admin {
 	willMenu(menu) {
 		menu.push({
 			url: '/admin',
-			label: 'Dashboard',
-			icon: 'fa-dashboard',
+			label: 'Data',
+			// icon: 'fa-dashboard',
+			active: true,
 			weight: -100
 		});
-
 		menu.push({
 			url: '/admin',
 			label: 'Content',
-			icon: 'fa-file',
+			// icon: 'fa-file',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'Structure',
+			// icon: 'fa-file',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'Appearance',
+			// icon: 'fa-file',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'Extend',
+			// icon: 'fa-file',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'Configuration',
+			// icon: 'fa-file',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'People',
+			// icon: 'fa-file',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'Reports',
+			// icon: 'fa-file',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'Help',
+			// icon: 'fa-file',
 			weight: -100
 		});
 		
@@ -76,10 +118,12 @@ class Admin {
 
 		menu = _.sortBy(this.menu, data => data.weight);
 		menu.forEach((menu, index) => {
-			menuHtml += `<li>
-					<a href="${menu.url}">
+		let activeClass = menu.active?' active':'';
+
+			menuHtml += `<li class="nav-item${activeClass}">
+					<a class="nav-link" href="${menu.url}">
 						<i class="fa ${menu.icon}"></i> 
-						<span>${menu.label}</span>
+						${menu.label}
 					</a>`
 			if(menu.items && menu.items.length) { 
 				menuHtml += `<ul class="treeview-menu">`
