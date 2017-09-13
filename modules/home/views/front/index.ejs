@@ -1,257 +1,37 @@
-<div class="section-1">
-  <div class="container">
-    <h1>Lorem ipsum dolor sit amet </h1>
-    <p> lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt <br> ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <br> ullamco laboris nisi ut aliquip ex ea commodo consequat. <br></p>
-    <button class="btn btn-default">download</button>
-    <button class="btn btn-primary">geting started</button>
-  </div>
-</div>
-
-<div class="section-2">
+<div class="collapse bg-dark" id="navbarHeader">
   <div class="container">
     <div class="row">
-    <div class="col-md-3 col-md-offset-2 text-left">
-      <i class="icon ion-social-html5-outline"></i>
-      <h4>HTML5</h4>
-      <ul class="lista">
-        <li>Syntax</li>
-
-        <li>HTML5 doctype</li>
-        <li>Language attribute</li>
-        <li>Character encoding</li>
-        <li>Internet explorer compatibility mode</li>
-        <li>CSS and javaScript includes</li>
-        <li>Practicality over purity</li>
-        <li>Attribute order</li>
-        <li>Boolean attributes</li>
-        <li>Reducing markup</li>
-        <li>JavaScript generated markup</li>
-      </ul>
-    </div>
-    <div class="col-md-3 text-left">
-    <i class="icon ion-social-css3-outline"></i>
-      <h4>CCS3</h4>
-
-      <ul class="lista">
-        <li>CSS syntax</li>
-        <li>Declaration order</li>
-        <li>Don t use @import</li>
-        <li>Media query placement</li>
-        <li>Prefixed properties</li>
-        <li>Rules with single declarations</li>
-        <li>Shorthand notation</li>
-        <li>Nesting in less and Sass</li>
-        <li>Operators in less and Sass</li>
-        <li>Comments</li>
-        <li>Classes</li>
-        <li>Selectors</li>
-        <li>Organization</li>
-      </ul>
-    </div>
-    <div class="col-md-3 text-left">
-        <i class="icon ion-social-javascript-outline"></i>
-      <h4>JS</h4>
-      <ul class="lista">
-         <li>Syntax</li>
-        <li>HTML5 doctype</li>
-        <li>Language attribute</li>
-        <li>Character encoding</li>
-        <li>Internet explorer compatibility mode</li>
-        <li>CSS and javaScript includes</li>
-        <li>Practicality over purity</li>
-        <li>Attribute order</li>
-        <li>Boolean attributes</li>
-        <li>Reducing markup</li>
-        <li>JavaScript generated markup</li>
-      </ul>
-    </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="section-3">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-       <h2>Syntax HTML5</h2>
-        <ul class="lista-1">
-          <li>Use soft tabs with two spaces-they re the only way to guar antee code renders the same in any environment.</li>
-          <li>Nested elements should be indented once ( two spaces ).</li>
-          <li>Always use double quotes, never single quotes, on attributes.</li>
-          <li>don t include a trailing slash in self-closing elemnts-the HTML5 spec says they re optional.</li>
-          <li>don t omit optional closing tags ( e.g. or  ).
+      <div class="col-sm-8 py-4">
+        <h4 class="text-white">About</h4>
+        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+      </div>
+      <div class="col-sm-4 py-4">
+        <h4 class="text-white">Contact</h4>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white">Follow on Twitter</a></li>
+          <li><a href="#" class="text-white">Like on Facebook</a></li>
+          <li><a href="#" class="text-white">Email me</a></li>
         </ul>
       </div>
-      <div class="col-md-6">
-
-        <pre class="language-js"><code class="language-js">var express = require('express');
-var app = express();
-
-app.get('/', function (req, res) {
-res.send('Hello World!');
-});
-
-app.listen(3000, function () {
-console.log('Example app listening on port 3000!');
-})</code></pre>
-      
-      </div>
     </div>
   </div>
 </div>
+<div class="navbar navbar-dark bg-dark">
+  <div class="container d-flex justify-content-between">
+    <a href="#" class="navbar-brand">Album</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</div>
 
-<div class="section-4">
+<section class="jumbotron text-center">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Syntax CSS3</h2>
-        <ul class="lista-1">
-          <li>Use soft tabs with two spaces-they re the only way to guar antee code renders the same in any environment</li>
-          <li>When grouping selectors, keep individual selectors to a single line.</li>
-          <li>Include one space before the opening brace of declaration blocks for legibility.</li>
-          <li>place closing braces of declaration blocks on a new line.</li>
-          <li>Include one space after : for each declaration </li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-
-           <pre class="language-js"><code class="language-js">var express = require('express');
-var app = express();
-
-app.get('/', function (req, res) {
-res.send('Hello World!');
-});
-
-app.listen(3000, function () {
-console.log('Example app listening on port 3000!');
-})</code></pre>
-      </div>
-
-    </div>
+    <h1 class="jumbotron-heading">Album example</h1>
+    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+    <p>
+      <a href="#" class="btn btn-primary">Main call to action</a>
+      <a href="#" class="btn btn-secondary">Secondary action</a>
+    </p>
   </div>
-</div>
-
-<div class="section-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Syntax JS</h2>
-        <ul class="lista-1">
-        <li>Use soft tabs with two spaces-they re the only way to guar antee code renders the same in any environment</li>
-          <li>When grouping selectors, keep individual selectors to a single line.</li>
-          <li>Include one space before the opening brace of declaration blocks for legibility.</li>
-          <li>place closing braces of declaration blocks on a new line.</li>
-          <li>Include one space after : for each declaration </li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-
-           <pre class="language-js"><code class="language-js">var express = require('express');
-var app = express();
-
-app.get('/', function (req, res) {
-res.send('Hello World!');
-});
-
-app.listen(3000, function () {
-console.log('Example app listening on port 3000!');
-})</code></pre>
-      </div>
-
-    </div>
-  </div>
-</div>
-<div class="section-6">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6"></div>
-      <div class="col-md-6 text-right">
-        <h2>Lorem ipsum dolor sit <br> amet consectetur </h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing <br> elit,sed do eiusmod tempor.<br>  <br> insididunt ut labore et dolore magna aliqua. Ut enim <br>ad minim veniam, quis nostrud exercitation ullamco <br> laboris nisi ut aliquip. <br>ex ea commodo consequat. <br></p>
-        <button class="btn btn-primary boton-1">Download</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="section-7">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 text-left">
-        <h2>Lorem ipsum dolor sit amet consectetur</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing <br> elit,sed do eiusmod tempor.<br>  <br> insididunt ut labore et dolore magna aliqua. Ut enim <br>ad minim veniam, quis nostrud exercitation ullamco <br> laboris nisi ut aliquip. <br>ex ea commodo consequat.</p>
-        <button class="btn btn-primary boton">Download</button>
-      </div>
-      <div class="col-md-6">
-        <img src="<%=require('assets').get('frontTheme')%>/img/devices.png" alt="">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section-8">
-  <div class="container">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-      </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active clearfix">
-        <img class="img-circle img-1" src="<%=require('assets').get('frontTheme')%>/img/imagen-1.jpg" alt="">
-        <div class="carousel-text col-md-6 col-md-offset-3">
-          <h2>Lorem ipsum dolor sit amet</h2>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br> eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> Ut enim ad minim veniam, quis nostrud exercitation" <br> </p>
-          <div class="rate_row"></div>
-          <div class="rateit" data-rateit-mode="font"  style="font-size:30px"></div>
-          <h4>JHON JOE</h4>
-        </div>
-
-      </div>
-      <div class="item">
-        <img class="img-circle img-1" src="<%=require('assets').get('frontTheme')%>/img/imagen-2.jpg" alt="...">
-        <div class="carousel-text col-md-6 col-md-offset-3">
-           <h2>Lorem ipsum dolor sit amet</h2>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br> eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> Ut enim ad minim veniam, quis nostrud exercitation" <br> </p>
-           <div class="rateit" data-rateit-mode="font"  style="font-size:30px"></div>
-           <h4>JHON JOE</h4>
-        </div>
-      </div>
-       <div class="item">
-        <img class="img-circle img-1" src="<%=require('assets').get('frontTheme')%>/img/imagen-3.jpg" alt="...">
-        <div class="carousel-text col-md-6 col-md-offset-3">
-          <h2>Lorem ipsum dolor sit amet</h2>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br> eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> Ut enim ad minim veniam, quis nostrud exercitation" <br> </p>
-           <div class="rateit" data-rateit-mode="font"  style="font-style: 30px"></div>
-           <h4>JHON JOE</h4>
-        </div>
-        </div>
-    </div>
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  </div> 
-</div>
-
-
-<div class="section-9">
-  <div class="container">
-    <h2>Subcribe our newsletters</h2>
-    <div class="input-boton">
-      <input type="text" placeholder="Your e-mael">
-      <button class="btn btn-primary">Subcribe</button>
-    </div>
-    <p>We promise to never spam you</p>
-  </div>
-</div>
+</section>
