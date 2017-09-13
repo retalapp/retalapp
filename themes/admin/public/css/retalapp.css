@@ -1,43 +1,64 @@
-.content-wrapper, .right-side {
-  background-color: #fff;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
 }
-.content-header>.breadcrumb {
-  float: none; 
-  position: static; 
-  padding: 4px 0;
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
 }
-.form-group {
-  width: 400px
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
 }
-.alert {
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+
+/* Additional to admin theme styles
+-------------------------------------------------- */
+/* Added for custom the admin UI. */
+
+.h1, h1 {
+  font-size: 1.8rem;
+}
+.container-header {
+  background-color: #f5f5f5;
+  padding: 60px 0 10px;
+}
+.nav.nav-tabs {
+  background-color: #f5f5f5;
+}
+.breadcrumb {
+  padding: 0 1rem;
+  margin-bottom: 15px;
+  background-color: transparent;
   border-radius: 0;
 }
-.content-header>.breadcrumb {
-  padding: 0 0 10px 0;
-  font-size: 14px;
-}
-.form-group {
-  width: 400px;
-  max-width: 100%;
-}
-pre {
-  background-color: transparent;
-  border: 0;
-  font-size: 16px;
-}
-nav.navbar {
-  text-align: center;
-}
-nav.navbar > h1 {
-  display: inline-block;
-  font-size: 27px;
-  margin: 10px 0;
-}
-@media (max-width: 991px) {
-  .content-header > .breadcrumb {
-    background: transparent;
-  }
-}
-.content-header > .breadcrumb {
-  padding: 0;
+.list-group-item{
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
 }
