@@ -27,6 +27,12 @@ Now add Retalapp as dependency
 ```
 npm install --save retalapp
 ```
+Or
+
+```
+yarn add retalapp
+```
+
 
 Now you need to create the startup script of your server.
 
@@ -49,6 +55,12 @@ So run
 ```
 npm start
 ```
+Or
+
+```
+yarn start
+```
+
 
 Now you can open your localhost to test
 
