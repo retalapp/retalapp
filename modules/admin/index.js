@@ -20,23 +20,16 @@ class Admin {
 			// this.message('info', 'This is a info session message');
 			// this.message('danger', 'This is a danger session message');
 			// this.message('success', 'This is a success session message');
-			this.Visitors.create({
-				ip: req.ip || '0.0.0.0'
-			})
-			.then((data) => {
-				console.log(data);
-
-				return res.render('index', {
-						title: 'Hello'
-					});
-			})
-			.catch((err) => {
-				this.message('danger', err.message);
-				return res.render('index', {
-						title: 'Hello'
-					});
+			return res.render('index', {
+				title: 'Data'
 			});
-	});
+		});
+
+		app.get('/data-structure', (req, res) => {
+			return res.render('data-structure', {
+				title: 'Data Structure'
+			});
+		});
 
 		return app;
 	}
