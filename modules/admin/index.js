@@ -136,7 +136,7 @@ class Admin {
 							title: `<em>${model.name}</em> Add field`,
 							field: field,
 							model: model,
-							errors: err.errors
+							errors: err.errors['fields.0.field_type']
 						});
 					this.message('danger', 'Validation errors.');
 					return res.status(502)
@@ -204,7 +204,7 @@ class Admin {
 		menu.push({
 			url: '/admin/data',
 			label: 'Data',
-			// icon: 'fa-dashboard',
+			// icon: 'fa-dashboard', // TODO: add by default Comments data
 			weight: -100
 		});
 		menu.push({
@@ -217,30 +217,6 @@ class Admin {
 			url: '/admin',
 			label: 'Files',
 			// icon: 'fa-dashboard',
-			weight: -100
-		});
-		menu.push({
-			url: '/admin',
-			label: 'Comments',
-			// icon: 'fa-file',
-			weight: -100
-		});
-		menu.push({
-			url: '/admin',
-			label: 'Appearance',
-			// icon: 'fa-file',
-			weight: -100
-		});
-		menu.push({
-			url: '/admin',
-			label: 'Plugin',
-			// icon: 'fa-file',
-			weight: -100
-		});
-		menu.push({
-			url: '/admin',
-			label: 'Settings',
-			// icon: 'fa-file',
 			weight: -100
 		});
 		menu.push({
