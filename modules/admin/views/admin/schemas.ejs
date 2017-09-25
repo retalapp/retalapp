@@ -16,11 +16,12 @@
           <button type="submit" class="btn btn-primary btn-flat">Search</button>
         </span>
       </div>
-      <a class="btn btn-link btn-sm" href="<%=require('href').go()%>">See all</a>
+      <a class="btn btn-link btn-sm" href="<%=require('href').go('../schemas')%>">See all</a>
       <a class="btn btn-link btn-sm" href="<%=require('href').go('csv')%>">Download CSV</a>
       <a href="/admin/schemas/add" class="btn btn-link btn-sm">Add Schema</a>
     </form>
 
+    <% if (paging.total > 0) { %>
     <form class="form-inline mt-2 mb-2">
       <select class="custom-select form-control-sm mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref">
         <option selected>Choose...</option>
@@ -29,16 +30,17 @@
         <option value="3">Three</option>
       </select>
       <button type="submit" class="btn btn-primary btn-sm">Apply to selected items</button>
+      <h6 class="d-inline-block my-0 ml-auto">  
+        <em><%=paging.total%> Records</em>
+      </h6>
     </form>
 
-    <% if(paging.total>0) { %>
-      <h6 class="text-right"><em><%=paging.total%> Records</em></h6>
       <table class="table table-hover">
         <thead>
           <tr>
-            <th style="width: 60px">
-              <label class="custom-control custom-checkbox mr-2 ml-2">
-                <input name="id" value="all" type="checkbox" class="custom-control-input">
+            <th style="width: 48px">
+              <label class="custom-control custom-checkbox mx-1 p-2">
+                <input data-toggle="check-all" data-class-target="check-schemas" type="checkbox" class="custom-control-input">
                 <span class="custom-control-indicator"></span>
               </label>
             </th>
@@ -50,9 +52,9 @@
         <tbody>
         <% model.forEach((data, index) => { %>
           <tr>
-            <td>
-              <label class="custom-control custom-checkbox mr-2 ml-2">
-                <input name="id" value="<%=data._id%>" type="checkbox" class="custom-control-input">
+            <td style="width: 48px">
+              <label class="custom-control custom-checkbox mx-1 p-2">
+                <input name="id" value="<%=data._id%>" type="checkbox" class="custom-control-input check-schemas">
                 <span class="custom-control-indicator"></span>
               </label>
             </td>

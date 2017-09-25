@@ -61,6 +61,14 @@
         items: 'li',
         toleranceElement: '> div'
       });
+
+      $("[data-toggle=check-all]").click(function() {
+        if ($(this).data('class-target')) {
+          $('input.' + $(this).data('class-target') + ':checkbox').prop('checked', this.checked);
+        } else {
+          $('input:checkbox').not(this).prop('checked', this.checked);
+        }
+      });
     });
     </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
