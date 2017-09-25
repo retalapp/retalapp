@@ -25,22 +25,60 @@ module.exports = ($module) => {
 	      type: Schema.Types.ObjectId,
 	      ref: '{ref}'
 	    },
+	    label: {
+	    	type: String,
+	    	required: true,
+	    	trim: true
+	    },
+	    name_code: {
+	    	type: String,
+	    	required: true,
+	    	trim: true
+	    },
+	    help_text: {
+	    	type: String,
+	    	required: true,
+	    	trim: true
+	    },
+	    field_type: {
+	    	type: String,
+	    	required: true,
+	    	trim: true
+	    },
+	    field_widget: {
+	    	type: String,
+	    	required: true,
+	    	trim: true
+	    },
+	    is_required: {
+	    	type: Boolean
+	    },
+	    validations: [{
+	    	name: {
+		    	type: String,
+		    	required: true,
+		    	trim: true
+		    },
+	    	source: {
+		    	type: String,
+		    	required: true,
+		    	trim: true
+		    }
+	    }],
     	parent: {
 	      type: Schema.Types.ObjectId,
 	      ref: '{ref}'
 	    },
-	    order: Number,
-	    version: String,
-	    name: String,
-	    name_code: String,
-	    description: String,
-	    type_field: String,
-	    field_widget: String,
-	    validations: [{
-	    	name: String,
-	    	source: String
-	    }]
-
+	    order: {
+	    	type: Number,
+	    	required: true,
+	    	trim: true
+	    },
+	    version: {
+	    	type: String,
+	    	required: true,
+	    	trim: true
+	    }
     }],
   },{ 
     'timestamps': { 

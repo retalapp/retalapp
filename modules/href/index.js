@@ -7,7 +7,7 @@ class Href {
     this.req = true;
   }
   
-  go(url, params, absolute) {
+  go(urlPath, params, absolute) {
     
     let query = '';
     let baseUrl = '';
@@ -16,11 +16,11 @@ class Href {
       baseUrl = this.req.protocol + '://' + this.req.get('host');
     if (params)
       query = '?' + qs.stringify(params);
-    if (!url)
-      return baseUrl + this.req.originalUrl + query;
-    if (url[0] === '/')
-      return baseUrl + url + query;
-    return baseUrl + this.req.originalUrl + '/' + url + query;
+    if (!urlPath)
+      return baseUrl + url.parse(this.req.baseUrl + this.req.path).pathname + query;
+    if (urlPath[0] === '/')
+      return baseUrl + urlPath + query;
+    return baseUrl + url.parse(this.req.baseUrl + this.req.path).pathname + '/' + urlPath + query;
   }
 
   goFull(url, params) {

@@ -66,12 +66,12 @@ class Admin {
 			.create(model)
 			.then((model) => {
 			  this.message('success', 'Record was save successfully.')
-        return res.redirect(model._id + '/fields')
+        return res.redirect(model._id + '/fields');
 			})
 			.catch((err) => {
 
-			  this.message('danger', 'Errors in the entered values.');
-        return res.status(500)
+			  this.message('danger', 'Validation errors.');
+        return res.status(502)
           .render('schemas-add', {
             model: model,
             errors: err.errors,
@@ -105,12 +105,47 @@ class Admin {
 				.then((model) => {
 					return res.render('schemas-fields-add-field', {
 						title: `<em>${model.name}</em> Add field`,
+						field: {},
 						model: model,
 						errors: {}
 					});
 				})
 				.catch((err) => {
 					throw new Error(err)
+				});
+		});
+
+		app.post('/schemas/:id/fields/add-field', (req, res) => {
+			const id = req.params.id;
+			const field = req.body;
+			let model = null;
+
+			this.Schemas
+				.findOne({_id: id})
+				.then((data) => {
+					model = data;
+					model.fields.push(field);
+					return model.save();
+				})
+				.then((model) => {
+				  this.message('success', 'Record was save successfully.')
+      	  return res.redirect(model._id + '/fields');
+				})
+				.catch((err) => {
+					console.log({
+							title: `<em>${model.name}</em> Add field`,
+							field: field,
+							model: model,
+							errors: err.errors
+						});
+					this.message('danger', 'Validation errors.');
+					return res.status(502)
+						.render('schemas-fields-add-field', {
+							title: `<em>${model.name}</em> Add field`,
+							field: field,
+							model: model,
+							errors: err.errors
+						});
 				});
 		});
 
