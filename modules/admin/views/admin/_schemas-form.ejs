@@ -1,19 +1,19 @@
 <form action="" method="post">
   <div class="form-group">
     <label for="structureName">Name *</label>
-    <input type="text" name="name" value="<%=model.name%>" class="form-control col-md-3" id="structureName" aria-describedby="structureNameHelp">
+    <input type="text" name="name" value="<%=model.name%>" class="form-control form-control-sm col-md-3" id="structureName" aria-describedby="structureNameHelp">
     <small class="help-block text-danger"><%= (errors && errors.name) ? errors.name : '';%></small>
     <small id="structureNameHelp" class="form-text text-muted">A human-readable name to identify this data structure.</small>
   </div>
   <div class="form-group">
       <label for="structureMachineName">Machine-readable name *</label>
-      <input type="text" name="name_code" value="<%=model.name_code%>" class="form-control col-md-3" id="structureMachineName" aria-describedby="structureMachineNameHelp">
+      <input type="text" name="name_code" value="<%=model.name_code%>" class="form-control form-control-sm col-md-3" id="structureMachineName" aria-describedby="structureMachineNameHelp">
       <small class="help-block text-danger"><%= (errors && errors.name_code) ? errors.name_code : '';%></small>
       <small id="structureMachineNameHelp" class="form-text text-muted">A unique machine-readable name for this data structure. It must only contain lowercase letters, numbers, and underscores. This name will be used for constructing the internal and programatic access to the data model.</small>
   </div>
   <div class="form-group">
     <label for="structureDescription">Description</label>
-    <textarea name="description" class="form-control" id="structureDescription" rows="3" aria-describedby="structureDescriptionHelp"><%=model.description%></textarea>
+    <textarea name="description" class="form-control form-control-sm" id="structureDescription" rows="3" aria-describedby="structureDescriptionHelp"><%=model.description%></textarea>
     <small class="help-block text-danger"><%= (errors && errors.description) ? errors.description : '';%></small>
     <small id="structureDescriptionHelp" class="form-text text-muted">A description to show in the add data form.</small>
   </div>
