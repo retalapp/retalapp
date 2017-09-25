@@ -1,0 +1,82 @@
+<nav class="nav nav-tabs px-3" id="myTab" role="tablist"></nav>
+<div class="tab-content">
+  <div class="container-fluid py-3 tab-pane fade show active">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active">Schemas</li>
+    </ol>
+
+    <%-require('admin').showWillMessages()%>
+
+    <form class="form-inline">
+      <div class="input-group input-group-sm">
+        <input value="<%=q%>" type="text" name="q" class="form-control">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary btn-flat">Search</button>
+        </span>
+      </div>
+      <a class="btn btn-link btn-sm" href="<%=require('href').go()%>">See all</a>
+      <a class="btn btn-link btn-sm" href="<%=require('href').go('csv')%>">Download CSV</a>
+      <a href="/admin/schemas/add" class="btn btn-link btn-sm">Add Schema</a>
+    </form>
+
+    <form class="form-inline mt-2 mb-2">
+      <select class="custom-select form-control-sm mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <button type="submit" class="btn btn-primary btn-sm">Apply to selected items</button>
+    </form>
+
+    <% if(paging.total>0) { %>
+      <h6 class="text-right"><em><%=paging.total%> Records</em></h6>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+              <label class="custom-control custom-checkbox mr-2 ml-2">
+                <input name="id" value="all" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+              </label>
+            </th>
+            <th><a href="<%=require('href').sort('name')%>">Name</a></th>
+            <th><a href="<%=require('href').sort('updated_at')%>">Updated at</a></th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% model.forEach((data, index) => { %>
+          <tr>
+            <td>
+              <label class="custom-control custom-checkbox mr-2 ml-2">
+                <input name="id" value="<%=data._id%>" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+              </label>
+            </td>
+            <td><a href="<%=require('href').go(data._id + '/edit')%>"><%= data.name %></a></td>
+            <td><%= data.updated_at %></td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="<%=require('href').go(data._id + '/edit')%>">Edit</a>
+                  <a class="dropdown-item" href="<%=require('href').go(data._id + '/fields')%>">Fields</a>
+                  <a class="dropdown-item" href="<%=require('href').go(data._id + '/versions')%>">Versions</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <em>There are no records to show.</em>
+    <% } %>
+    <%- require('pag').show(paging)%>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<nav class="nav nav-tabs px-3" id="myTab" role="tablist">
+</nav>
+<div class="tab-content">
+  <div class="container-fluid py-3 tab-pane fade show active">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active">Pages</li>
+    </ol>
+
+    <%-require('admin').showWillMessages()%>
+
+    <a href="/admin/schemas/add" class="btn btn-primary">+ Add Page</a> <br>
+    Filters<br>
+    Actions<br>
+
+    <ol class="list-group">
+      <li data-id="1" data-name="Name 1" class="list-group-item">
+        <div class="row"><div class="col-md-10">
+          <div class="item-content">
+          <a href="#" class=""><h5>Cras justo odio</h5></a>
+          <small class="text-muted">Define your data structure, validations, dependencies and control access.</small>
+        </div>
+        </div><div class="col-md-2 text-right"> 
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action
+            </button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </div></div></div>
+      </li>
+      <li data-id="2" data-name="Name 2" class="list-group-item">
+        <div class="row"><div class="col-md-10">
+          <div class="item-content">
+          <a href="#" class=""><h5>Dapibus ac facilisis in</h5></a>
+          <small class="text-muted">Define your data structure, validations, dependencies and control access.</small>
+        </div>
+        </div><div class="col-md-2 text-right"> 
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action
+            </button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </div></div></div>
+      </li>
+      <li data-id="3" data-name="Name 3" class="list-group-item">
+        <div class="row"><div class="col-md-10">
+          <div class="item-content">
+          <a href="#" class=""><h5>Morbi leo risus</h5></a>
+          <small class="text-muted">Define your data structure, validations, dependencies and control access.</small>
+        </div>
+        </div><div class="col-md-2 text-right"> 
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action
+            </button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </div></div></div>
+      </li>
+    </ol>
+  </div>
+</div>

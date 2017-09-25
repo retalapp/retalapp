@@ -1,0 +1,46 @@
+<nav class="nav nav-tabs px-3" id="myTab" role="tablist">
+  <a class="nav-item nav-link" href="<%=require('href').go('../edit')%>">Edit</a>
+  <a class="nav-item nav-link active" href="<%=require('href').go('../fields')%>">Fields</a>
+  <a class="nav-item nav-link" href="<%=require('href').go('../versions')%>">Versions</a>
+</nav>
+<div class="tab-content">
+  <div class="container-fluid py-3 tab-pane fade show active">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/admin/schemas">Schemas</a></li>
+      <li class="breadcrumb-item active"><em><%=model.name%></em> Fields</li>
+    </ol>
+
+    <%-require('admin').showWillMessages()%>
+
+    <div class="my-3"><a href="/admin/schemas/<%=model._id%>/fields/add-field" class="btn btn-primary">+ Add field</a></div>
+
+    <% if (model.fields) { %>
+    <ol class="sortable list-group list-group-flush">
+      <%  _.each(model.fields, (field) => { %>
+      <li data-id="1" data-name="Name 1" class="list-group-item">
+        <div class="row"><div class="col-md-10">
+          <div class="item-content">
+          <h5><i class="item-handle ion-arrow-move"></i>Cras justo odio</h5>
+          <small class="text-muted">Define your data structure, validations, dependencies and control access.</small>
+        </div>
+        </div><div class="col-md-2 text-right"> 
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action
+            </button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </div></div></div>
+      </li>
+      <% }) %>
+    </ol>
+    <% } %>
+  </div>
+</div>

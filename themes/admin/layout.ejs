@@ -14,14 +14,14 @@
 
     <!-- Custom styles for this template -->
     <link href="<%=require('assets').get('adminTheme')%>/css/retalapp.css" rel="stylesheet">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+
    </head>
 
   <body>
     <!-- Fixed navbar -->
     <header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="YourProject">
-        <svg class="d-block" width="36" height="36" viewBox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>YourProject</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"></path><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"></path></svg>
-      </a>
+      <a class="navbar-brand mr-0 mr-md-2 ion-erlenmeyer-flask" href="/admin" aria-label="YourProject"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,14 +29,14 @@
         <ul class="navbar-nav mr-auto">
           <%-require('admin').showWillMenu()%>
         </ul>
-        <a class="btn mb-3 mb-md-0 ml-md-3" href="#">admin</a>
+        <a class="btn mb-3 mb-md-0 ml-md-3" href="/admin/users/me">admin</a>
       </div>
     </header>
 
     <section class="container-header">
       <div class="container-fluid">
         <div class="mt-3">
-          <h1><%=title%></h1>
+          <h1><%-title%></h1>
         </div>
       </div>
     </section>
@@ -47,10 +47,22 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="<%=require('assets').get('adminTheme')%>/js/jquery-3.2.1.slim.min.js"><\/script>')</script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="<%=require('assets').get('adminTheme')%>/js/jquery-3.2.1.min.js"><\/script>')</script>
     <script src="<%=require('assets').get('adminTheme')%>/js/popper.min.js"></script>
     <script src="<%=require('assets').get('adminTheme')%>/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="<%=require('assets').get('adminTheme')%>/js/jquery.mjs.nestedSortable.js"></script>
+    <script>
+    $(function  () {
+
+      $('.sortable').nestedSortable({
+        handle: '.item-handle',
+        items: 'li',
+        toleranceElement: '> div'
+      });
+    });
+    </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<%=require('assets').get('adminTheme')%>/js/ie10-viewport-bug-workaround.js"></script>
   </body>

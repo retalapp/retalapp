@@ -1,0 +1,48 @@
+Schemas
+--------------
+- name
+- name_machine
+- description
+		- fields (set)
+
+			parent (id)
+			order
+			version
+			name
+			description (Help text)
+			type
+			 - form widget
+			 - 
+
+			validations
+			 -1
+			 -2
+			 -3
+
+		Default fields:
+		    language
+
+			title/name
+			createdAt
+      		updatedAt
+      		createdBy
+
+- generated
+
+Versions
+--------------
+- schema
+- versions []
+	- fields (set)
+			version
+			name
+			description
+			type
+
+				- validations
+				 -1
+				 -2
+				 -3
+
+			form widget
+

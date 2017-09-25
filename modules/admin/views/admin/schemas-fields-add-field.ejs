@@ -1,0 +1,37 @@
+<nav class="nav nav-tabs px-3" id="myTab" role="tablist"></nav>
+<div class="tab-content">
+  <div class="container-fluid py-3 tab-pane fade show active">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/admin">Data</a></li>
+      <li class="breadcrumb-item"><a href="/admin/schemas">Squemas</a></li>
+      <li class="breadcrumb-item"><a href="/admin/schemas/<%=model._id%>/fields">Test</a></li>
+      <li class="breadcrumb-item active">Add Field</li>
+    </ol>
+
+    <%-require('admin').showWillMessages()%>
+
+    <form>
+        <div class="form-group">
+          <label for="structureName">Add a new field *</label>
+          <input type="text" class="form-control col-md-3" id="structureName" aria-describedby="structureNameHelp">
+          <small id="structureNameHelp" class="form-text text-muted">A human-readable name to identify this Squemas.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="structureName">Label *</label>
+            <input type="text" class="form-control col-md-3" id="structureName" aria-describedby="structureNameHelp">
+            <small id="structureNameHelp" class="form-text text-muted">A human-readable name to identify this Squemas.</small>
+        </div>
+        <div class="form-group">
+            <label for="structureMachineName">Machine-readable name *</label>
+            <input type="text" class="form-control col-md-3" id="structureMachineName" aria-describedby="structureMachineNameHelp">
+            <small id="structureMachineNameHelp" class="form-text text-muted">A unique machine-readable name for this Squemas. It must only contain lowercase letters, numbers, and underscores. This name will be used for constructing the internal and programatic access to the data model.</small>
+        </div>
+        <!--<button type="submit" class="btn btn-primary">Save and manage fields</button>-->
+        <a href="#" class="btn btn-primary">Add a new field</a>
+      </form>
+
+  </div>
+</div>

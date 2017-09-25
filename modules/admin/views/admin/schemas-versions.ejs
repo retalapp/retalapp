@@ -1,0 +1,49 @@
+<nav class="nav nav-tabs px-3" id="myTab" role="tablist">
+  <a class="nav-item nav-link" href="<%=require('href').go('../edit')%>">Edit</a>
+  <a class="nav-item nav-link" href="<%=require('href').go('../fields')%>">Fields</a>
+  <a class="nav-item nav-link active" href="<%=require('href').go('../versions')%>">Versions</a>
+</nav>
+<div class="tab-content">
+  <div class="container-fluid py-3 tab-pane fade show active">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/admin/schemas">Schemas</a></li>
+      <li class="breadcrumb-item active"><em>Test</em> Versions</li>
+    </ol>
+
+    <%-require('admin').showWillMessages()%>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Machine name</th>
+          <th>Field type</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>Label</td>
+            <td>Machine name</td>
+            <td>Field type</td>
+            <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,11 +1,11 @@
 module.exports = ($module) => {
   const Schema   = $module.adapter.Schema;
   const noteSchema = new Schema({
-    'id' : {
+    id : {
       type: Schema.Types.ObjectId,
       ref: '{ref}'
     },
-    'ip' : String
+    ip : String
   })
   return $module.adapter.model('Visitors', noteSchema);
 }

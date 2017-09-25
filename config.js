@@ -49,6 +49,11 @@ module.exports = (retalapp) => {
   retalapp.module('href', '#core/modules/href');
 
   /**
+   * Href
+  */
+  retalapp.module('pag', '#core/modules/pag');
+
+  /**
    * Assets
   */
   retalapp.module('assets', '#core/modules/assets');

@@ -11,16 +11,16 @@ class Href {
     
     let query = '';
     let baseUrl = '';
-    
+
     if (absolute)
       baseUrl = this.req.protocol + '://' + this.req.get('host');
     if (params)
       query = '?' + qs.stringify(params);
     if (!url)
-      return baseUrl + this.req.baseUrl + this.req.path + query;
+      return baseUrl + this.req.originalUrl + query;
     if (url[0] === '/')
       return baseUrl + url + query;
-    return baseUrl + this.req.baseUrl + '/' + url + query;
+    return baseUrl + this.req.originalUrl + '/' + url + query;
   }
 
   goFull(url, params) {

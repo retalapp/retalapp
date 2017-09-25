@@ -10,25 +10,142 @@ class Admin {
 
 	init() {
 		this.adapter = require(this.connection).adapter;
-		this.Visitors = require(__dirname + '/models/Visitors')(this);
+		this.Schemas = require(__dirname + '/models/Schemas')(this);
 	}
 
 	willAdmin(app) {
 		
 		app.get('/', (req, res) => {
-			// this.message('warning', 'This is a warning session message');
-			// this.message('info', 'This is a info session message');
-			// this.message('danger', 'This is a danger session message');
-			// this.message('success', 'This is a success session message');
 			return res.render('index', {
+				title: 'Dashboard'
+			});
+		});
+		
+		app.get('/pages', (req, res) => {
+			return res.render('pages', {
+				title: 'Pages'
+			});
+		});
+
+		app.get('/data', (req, res) => {
+			return res.render('data', {
 				title: 'Data'
 			});
 		});
 
-		app.get('/data-structure', (req, res) => {
-			return res.render('data-structure', {
-				title: 'Data Structure'
+		app.get('/schemas', (req, res) => {
+			const { q, page, by, sort } = req.query
+
+	    this.Schemas
+	      .search({ q, page, by, sort })
+	      .then(({model, paging}) => {
+
+  				return res.render('schemas', {
+						title: 'Schemas',
+						q, model, paging
+					});
+	      })
+	      .catch((err) => {
+					err.status = 500;
+					return next(err);
+	      });
+		});
+
+		app.get('/schemas/add', (req, res) => {
+			return res.render('schemas-add', {
+				title: 'Add Schemas...',
+				model: {},
+        errors: {}
 			});
+		});
+
+		app.post('/schemas/add', (req, res) => {
+			const model = req.body;
+
+			this.Schemas
+			.create(model)
+			.then((model) => {
+			  this.message('success', 'Record was save successfully.')
+        return res.redirect(model._id + '/fields')
+			})
+			.catch((err) => {
+
+			  this.message('danger', 'Errors in the entered values.');
+        return res.status(500)
+          .render('schemas-add', {
+            model: model,
+            errors: err.errors,
+						title: 'Add Schemas'
+          })
+			})
+		});
+
+		app.get('/schemas/:id/edit', (req, res) => {
+			const id = req.params.id
+
+			this.Schemas
+				.findOne({_id: id})
+				.then((model) => {
+					return res.render('schemas-edit', {
+						title: `<em>${model.name}</em> Edit`,
+						model: model,
+						errors: {}
+					});
+				})
+				.catch((err) => {
+					throw new Error(err);
+				});
+		});
+
+		app.get('/schemas/:id/fields/add-field', (req, res) => {
+			const id = req.params.id
+
+			this.Schemas
+				.findOne({_id: id})
+				.then((model) => {
+					return res.render('schemas-fields-add-field', {
+						title: `<em>${model.name}</em> Add field`,
+						model: model,
+						errors: {}
+					});
+				})
+				.catch((err) => {
+					throw new Error(err)
+				});
+		});
+
+		app.get('/schemas/:id/fields', (req, res) => {
+			const id = req.params.id
+
+			this.Schemas
+				.findOne({_id: id})
+				.then((model) => {
+					return res.render('schemas-fields', {
+						title: `<em>${model.name}</em> Fields`,
+						model: model,
+						errors: {}
+					});
+				})
+				.catch((err) => {
+					throw new Error(err)
+				});
+		});
+
+		app.get('/schemas/:id/versions', (req, res) => {
+			const id = req.params.id
+
+			this.Schemas
+				.findOne({_id: id})
+				.then((model) => {
+					return res.render('schemas-versions', {
+						title: `<em>${model.name}</em> Versions`,
+						model: model,
+						errors: {}
+					});
+				})
+				.catch((err) => {
+					throw new Error(err)
+				});
 		});
 
 		return app;
@@ -43,21 +160,33 @@ class Admin {
 
 	willMenu(menu) {
 		menu.push({
-			url: '/admin',
-			label: 'Data',
+			url: '/admin/pages',
+			label: 'Pages',
 			// icon: 'fa-dashboard',
 			active: true,
 			weight: -100
 		});
 		menu.push({
-			url: '/admin',
-			label: 'Content',
-			// icon: 'fa-file',
+			url: '/admin/data',
+			label: 'Data',
+			// icon: 'fa-dashboard',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin/schemas',
+			label: 'Schemas',
+			// icon: 'fa-dashboard',
 			weight: -100
 		});
 		menu.push({
 			url: '/admin',
-			label: 'Structure',
+			label: 'Files',
+			// icon: 'fa-dashboard',
+			weight: -100
+		});
+		menu.push({
+			url: '/admin',
+			label: 'Comments',
 			// icon: 'fa-file',
 			weight: -100
 		});
@@ -69,31 +198,19 @@ class Admin {
 		});
 		menu.push({
 			url: '/admin',
-			label: 'Extend',
+			label: 'Plugin',
 			// icon: 'fa-file',
 			weight: -100
 		});
 		menu.push({
 			url: '/admin',
-			label: 'Configuration',
+			label: 'Settings',
 			// icon: 'fa-file',
 			weight: -100
 		});
 		menu.push({
 			url: '/admin',
-			label: 'People',
-			// icon: 'fa-file',
-			weight: -100
-		});
-		menu.push({
-			url: '/admin',
-			label: 'Reports',
-			// icon: 'fa-file',
-			weight: -100
-		});
-		menu.push({
-			url: '/admin',
-			label: 'Help',
+			label: 'Users',
 			// icon: 'fa-file',
 			weight: -100
 		});
@@ -151,43 +268,31 @@ class Admin {
 
 		if(this.req.session.danger.length) {
     	html+=`<div class="alert alert-danger">`;
-      	html+=`<h4>Danger</h4>`;
-      	html+=`<ul>`;
-        this.req.session.danger.forEach((message) => {
-          html+=`<li>${message}</li>`;
+      	this.req.session.danger.forEach((message) => {
+          html+=`<span>${message}</span>`;
         });
-      	html+=`</ul>`;
-    	html+=`</div>`;
+      	html+=`</div>`;
     }
     if(this.req.session.success.length) {
     	html+=`<div class="alert alert-success">`;
-      	html+=`<h4>Success</h4>`;
-      	html+=`<ul>`;
-        this.req.session.success.forEach((message) => {
-          html+=`<li>${message}</li>`;
+      	this.req.session.success.forEach((message) => {
+          html+=`<span>${message}</span>`;
         });
-      	html+=`</ul>`;
-    	html+=`</div>`;
+      	html+=`</div>`;
     }
     if(this.req.session.warning.length) {
     	html+=`<div class="alert alert-warning">`;
-      	html+=`<h4>Warning</h4>`;
-      	html+=`<ul>`;
-        this.req.session.warning.forEach((message) => {
-          html+=`<li>${message}</li>`;
+      	this.req.session.warning.forEach((message) => {
+          html+=`<span>${message}</span>`;
         });
-      	html+=`</ul>`;
-    	html+=`</div>`;
+      	html+=`</div>`;
     }
     if(this.req.session.info.length) {
     	html+=`<div class="alert alert-info">`;
-      	html+=`<h4>Info</h4>`;
-      	html+=`<ul>`;
-        this.req.session.info.forEach((message) => {
-          html+=`<li>${message}</li>`;
+      	this.req.session.info.forEach((message) => {
+          html+=`<span>${message}</span>`;
         });
-      	html+=`</ul>`;
-    	html+=`</div>`;
+      	html+=`</div>`;
     }
     this.clearMessages();
 		return html;
