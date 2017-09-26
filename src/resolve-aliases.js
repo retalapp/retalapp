@@ -9,8 +9,8 @@ module.exports = (request, pathAliases, log) => {
 	if (request[0]!=='#') return request;
 
 	aliasPath = pathAliases || {};
-	aliasPieces = request.replace('/', path.sep);
-	aliasPieces = request.split(path.sep);
+	aliasPieces = request.replace(/\//g, path.sep);
+	aliasPieces = request.split('/');
 	alias = aliasPath[aliasPieces[0]];
 
 	if (!alias) {
