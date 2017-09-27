@@ -12,29 +12,52 @@
     <%-require('admin').showWillMessages()%>
 
     <form action="" method="post">
+
       <div class="form-group">
         <label for="structureName">Add a new field *</label>
         <select name="field_type" class="form-control form-control-sm col-md-2" id="structureName">
           <option value="">Choose...</option>
-          <option <%= field.field_type=='1'?'selected="selected"':''; %> value="1">One</option>
-          <option <%= field.field_type=='2'?'selected="selected"':''; %> value="2">Two</option>
-          <option <%= field.field_type=='3'?'selected="selected"':''; %> value="3">Three</option>
+          <% _.each(['String', 'Number', 'Date', 'Buffer', 'Boolean', 'Mixed', 'Objectid', 'Array'], (field_type) => { %>
+            <option <%= (field.field_type==field_type) ? 'selected="selected"' : ''; %> 
+              value="<%= field_type %>"><%= field_type %></option>
+          <% }) %>
         </select>
-        <small class="help-block text-danger"><%= (errors && errors['fields.0.field_type']) ? errors['fields.0.field_type'] : '';%></small>
+        <small class="help-block text-danger"><%= (errors && errors.field_type) ? errors.field_type : '';%></small>
         <small id="structureNameHelp" class="form-text text-muted">Select the field type.</small>
       </div>
-      <!-- <div class="form-group">
-          <label for="structureMachineName">Machine-readable name *</label>
-          <input type="text" name="name_code" value="<%=field.name_code%>" class="form-control col-md-3" id="structureMachineName" aria-describedby="structureMachineNameHelp">
-          <small class="help-block text-danger"><%= (errors && errors.name_code) ? errors.name_code : '';%></small>
-          <small id="structureMachineNameHelp" class="form-text text-muted">A unique machine-readable name for this data structure. It must only contain lowercase letters, numbers, and underscores. This name will be used for constructing the internal and programatic access to the data field.</small>
-      </div> -->
-      <!-- <div class="form-group">
-        <label for="structureDescription">Description</label>
-        <textarea name="help_text" class="form-control" id="structurehelp_text" rows="3" aria-describedby="structurehelp_textHelp"><%=field.help_text%></textarea>
+
+      <div class="form-group">
+        <label for="structureNamelabel">label *</label>
+        <input value="<%=field.label%>" name="label" class="form-control form-control-sm col-md-2" id="structureNamelabel">
+        <small class="help-block text-danger"><%= (errors && errors.label) ? errors.label : '';%></small>
+        <small id="structureNameHelplabel" class="form-text text-muted">Field label.</small>
+      </div>
+      <div class="form-group">
+        <label for="structureNamename_code">name_code *</label>
+        <input value="<%=field.name_code%>" name="name_code" class="form-control form-control-sm col-md-2" id="structureNamename_code">
+        <small class="help-block text-danger"><%= (errors && errors.name_code) ? errors.name_code : '';%></small>
+        <small id="structureNameHelpname_code" class="form-text text-muted">Field name_code.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="structureNamehelp_text">Help text</label>
+        <textarea name="help_text" class="form-control form-control-sm" id="structureNamehelp_text" rows="3" aria-describedby="structureDescriptionHelp"><%=field.help_text%></textarea>
         <small class="help-block text-danger"><%= (errors && errors.help_text) ? errors.help_text : '';%></small>
-        <small id="structurehelp_textHelp" class="form-text text-muted">A description to show in the add data form.</small>
-      </div> -->
+        <small id="structureNameHelphelp_text" class="form-text text-muted">A description to show in the add data form.</small>
+      </div>
+
+      <div class="form-group">
+        <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+          <input 
+            <%= field.is_required?'checked="checked"':''; %> 
+            name="is_required" 
+            type="checkbox" 
+            class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">is_required</span>
+        </label>
+      </div>
+
       <button type="submit" class="btn btn-primary btn-sm">Add a new field</button>
     </form>
   </div>

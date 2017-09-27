@@ -103,6 +103,9 @@ label {
   top: -5px;
   left: -5px;
 }
+.list-group.sortable .list-group-item .item-content {
+  vertical-align: sub;
+}
 .list-group.sortable .list-group-item,
 .list-group.sortable .list-group-item:first-child,
 .list-group.sortable .list-group-item:last-child {
@@ -134,6 +137,6 @@ label {
   padding: 0 10px;
   display: inline-block;
   vertical-align: bottom;
-  height: 34px;
+  height: 17px;
   margin: auto 0;
 }

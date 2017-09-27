@@ -37,17 +37,18 @@ module.exports = ($module) => {
 	    },
 	    help_text: {
 	    	type: String,
-	    	required: true,
+	    	required: false,
 	    	trim: true
 	    },
 	    field_type: {
 	    	type: String,
 	    	required: true,
-	    	trim: true
+	    	trim: true,
+	    	enum: ['String', 'Number', 'Date', 'Buffer', 'Boolean', 'Mixed', 'Objectid', 'Array'],
 	    },
 	    field_widget: {
 	    	type: String,
-	    	required: true,
+	    	required: false,
 	    	trim: true
 	    },
 	    is_required: {

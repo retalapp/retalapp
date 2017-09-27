@@ -124,27 +124,32 @@ class Admin {
 				.findOne({_id: id})
 				.then((data) => {
 					model = data;
+					field.order = 1;
+					field.version = '0.0.0';
+					console.log('field....', field);
 					model.fields.push(field);
 					return model.save();
 				})
 				.then((model) => {
 				  this.message('success', 'Record was save successfully.')
-      	  return res.redirect(model._id + '/fields');
+      	  return res.redirect('../fields');
 				})
 				.catch((err) => {
-					console.log({
-							title: `<em>${model.name}</em> Add field`,
-							field: field,
-							model: model,
-							errors: err.errors['fields.0.field_type']
+					const errors = [];
+
+					if (err.errors) {
+						_.each(err.errors, (item) => {
+							errors[item.path] = item.message;
 						});
+					}
+					console.log('errors', errors);
 					this.message('danger', 'Validation errors.');
 					return res.status(502)
 						.render('schemas-fields-add-field', {
 							title: `<em>${model.name}</em> Add field`,
 							field: field,
 							model: model,
-							errors: err.errors
+							errors: errors
 						});
 				});
 		});
