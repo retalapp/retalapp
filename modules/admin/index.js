@@ -33,7 +33,7 @@ class Admin {
 			});
 		});
 
-		app.get('/schemas', (req, res) => {
+		app.get('/schemas', (req, res, next) => {
 			const { q, page, by, sort } = req.query
 
 	    this.Schemas
@@ -80,111 +80,125 @@ class Admin {
 			})
 		});
 
-		app.get('/schemas/:id/edit', (req, res) => {
-			const id = req.params.id
+	  app.param('id', (req, res, next, id) => {
+	    this.Schemas
+			.findOne({_id: id})
+			.then((model) => {
+        if(!model) {
+          err = new Error('No such model');
+          err.status = 404;
+          return next(err);
+        }
+        req.model = model;
+        next();
+			})
+			.catch((err) => {
+			  err.status = 500;
+        return next(err);
+      });
+	  });
 
-			this.Schemas
-				.findOne({_id: id})
-				.then((model) => {
-					return res.render('schemas-edit', {
-						title: `<em>${model.name}</em> Edit`,
-						model: model,
-						errors: {}
-					});
-				})
-				.catch((err) => {
-					throw new Error(err);
+		app.get('/schemas/:id/edit', (req, res) => {
+			const { model } = req;
+
+			return res.render('schemas-edit', {
+				title: `<em>${model.name}</em> Edit`,
+				model: model,
+				errors: {}
+			});
+		});
+
+		app.post('/schemas/:id/edit', (req, res) => {
+			const { model } = req;
+			const { name, name_code, description } = req.body;
+
+			model.name = name;
+			model.name_code = name_code;
+			model.description = description;
+
+			model
+			.save()
+			.then((model) => {
+			  this.message('success', 'Record was updated successfully.')
+      	return res.redirect('fields');
+			})
+			.catch((err) => {
+				return res.render('schemas-edit', {
+					title: `<em>${model.name}</em> Edit`,
+					model: model,
+					errors: {}
 				});
+			});
 		});
 
 		app.get('/schemas/:id/fields/add-field', (req, res) => {
-			const id = req.params.id
+			const { model } = req;
 
-			this.Schemas
-				.findOne({_id: id})
-				.then((model) => {
-					return res.render('schemas-fields-add-field', {
-						title: `<em>${model.name}</em> Add field`,
-						field: {},
-						model: model,
-						errors: {}
-					});
-				})
-				.catch((err) => {
-					throw new Error(err)
-				});
+			res.render('schemas-fields-add-field', {
+				title: `<em>${model.name}</em> Add field`,
+				field: {},
+				model: model,
+				errors: {}
+			});
 		});
 
-		app.post('/schemas/:id/fields/add-field', (req, res) => {
-			const id = req.params.id;
-			const field = req.body;
-			let model = null;
+		app.post('/schemas/:id/fields/add-field', (req, res, next) => {
+			const { model } = req;
+			const { field_type, label, name_code, help_text } = req.body;
+			const field = {};
 
-			this.Schemas
-				.findOne({_id: id})
-				.then((data) => {
-					model = data;
-					field.order = 1;
-					field.version = '0.0.0';
-					console.log('field....', field);
-					model.fields.push(field);
-					return model.save();
-				})
-				.then((model) => {
+			field.field_type = field_type;
+			field.label = label;
+			field.name_code = name_code;
+			field.help_text = help_text;
+
+			field.order = 1;
+			field.version = '0.0.0';
+			model.fields.push(field);
+
+			model
+			.save()
+			.then((model) => {
 				  this.message('success', 'Record was save successfully.')
       	  return res.redirect('../fields');
-				})
-				.catch((err) => {
-					const errors = [];
+			})
+			.catch((err) => {
+				const errors = [];
 
-					if (err.errors) {
-						_.each(err.errors, (item) => {
-							errors[item.path] = item.message;
-						});
-					}
-					console.log('errors', errors);
-					this.message('danger', 'Validation errors.');
-					return res.status(502)
-						.render('schemas-fields-add-field', {
-							title: `<em>${model.name}</em> Add field`,
-							field: field,
-							model: model,
-							errors: errors
-						});
-				});
+				if (err.errors) {
+					_.each(err.errors, (item) => {
+						errors[item.path] = item.message;
+					});
+				}
+
+				this.message('danger', 'Validation errors.');
+				return res.status(502)
+					.render('schemas-fields-add-field', {
+						title: `<em>${model.name}</em> Add field`,
+						field: field,
+						model: model,
+						errors: errors
+					});
+			});
 		});
 
 		app.get('/schemas/:id/fields', (req, res) => {
-			const id = req.params.id
+			const { model } = req;
 
-			this.Schemas
-				.findOne({_id: id})
-				.then((model) => {
-					return res.render('schemas-fields', {
-						title: `<em>${model.name}</em> Fields`,
-						model: model,
-						errors: {}
-					});
-				})
-				.catch((err) => {
-					throw new Error(err)
-				});
+			res.render('schemas-fields', {
+				title: `<em>${model.name}</em> Fields`,
+				model: model,
+				errors: {}
+			});
 		});
 
 		app.get('/schemas/:id/versions', (req, res) => {
-			const id = req.params.id
+			const { model } = req;
 
-			this.Schemas
-				.findOne({_id: id})
-				.then((model) => {
-					return res.render('schemas-versions', {
-						title: `<em>${model.name}</em> Versions`,
-						model: model,
-						errors: {}
-					});
-				})
-				.catch((err) => {
-					throw new Error(err)
+			return res.render('schemas-versions', {
+					title: `<em>${model.name}</em> Versions`,
+					model: model,
+					errors: {}
 				});
 		});
 

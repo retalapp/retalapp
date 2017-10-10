@@ -39,13 +39,13 @@ Now you need to create the startup script of your server.
 Create a new file called server.js and type the same content inside
 
 ```javascript
-const retalapp = require('retalapp');
+const rl = require('retalapp');
 
-retalapp.run((app) => {
-  const port = retalapp.conf('port');
+rl.run((app) => {
+  const port = rl.conf('port');
   app.listen(port, () => {
     console.log(require('lang').t('Express server listening on port') + ' ' + port);
-    retalapp.end();
+    rl.end();
   });
 });
 
@@ -74,41 +74,41 @@ You can optionally set the current core modules to modify the core behaviors or 
 /**
  * Lang
 */
-retalapp.module('lang', '#core/modules/lang', {
+rl.module('lang', '#core/modules/lang', {
   language: 'en_US',
 });
 
 /**
  * Database
 */
-retalapp.module('db', '#core/modules/db', {
+rl.module('db', '#core/modules/db', {
   connect: 'mongodb://localhost/challenge'
 });
 
 /**
  * Href
 */
-retalapp.module('href', '#core/modules/href');
+rl.module('href', '#core/modules/href');
 
 /**
  * Assets
 */
-retalapp.module('assets', '#core/modules/assets');
+rl.module('assets', '#core/modules/assets');
 
 /**
  * Logs
 */
-retalapp.module('log', '#core/modules/log');
+rl.module('log', '#core/modules/log');
 
 /**
  * Home front default route
 */
-retalapp.module('home', '#core/modules/home');
+rl.module('home', '#core/modules/home');
 
 /**
  * Admin dashboard default route
 */
-retalapp.module('admin', '#core/modules/admin', {
+rl.module('admin', '#core/modules/admin', {
   connection: 'db'
 });
 
@@ -136,18 +136,18 @@ module.exports = MyModule;
 // So you can access to the urls that your module register in the willApp method
 
 // if your module is in te node_modules directory only set the name of the package as source
-// retalapp.module('mymodule', 'my-module-in-npm', {
-retalapp.module('mymodule', __dirname + '/mymodules/mimoduledir/index.js', {
+// rl.module('mymodule', 'my-module-in-npm', {
+rl.module('mymodule', __dirname + '/mymodules/mimoduledir/index.js', {
   parameterofmymodule: 'Good morning!',
   parameterofmymodule1: 'Good morning one!',
   parameterofmymodule2: 'Good morning two!'
 });
 
-retalapp.run((app) => {
-  const port = retalapp.conf('port');
+rl.run((app) => {
+  const port = rl.conf('port');
   app.listen(port, () => {
     console.log(require('lang').t('Express server listening on port') + ' ' + port);
-    retalapp.end();
+    rl.end();
   });
 });
 
@@ -181,5 +181,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Motivations
 
 * Create petencial reusable logic and data models.
-* Only istalling a package be enable to use a big part of logic eg:. a blog module, users module, wiki, shipping etc...
+* Only installing a package be enable to use a big part of logic eg:. a blog module, users module, wiki, shipping etc...
 * Reuse code in different project using the seteable modules.
+* Create the model squemas using a visual interface and avoid issues.
+* Less code is less trouble and maintenance.

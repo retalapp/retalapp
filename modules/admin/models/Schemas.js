@@ -1,3 +1,6 @@
+const vermongo = require('mongoose-vermongo');
+const typeList = ['String', 'Number', 'Date', 'Buffer', 'Boolean', 'Mixed', 'Objectid', 'Array'];
+
 module.exports = ($module) => {
   const Schema   = $module.adapter.Schema;
   const schemasSchema = new Schema({
@@ -44,7 +47,7 @@ module.exports = ($module) => {
 	    	type: String,
 	    	required: true,
 	    	trim: true,
-	    	enum: ['String', 'Number', 'Date', 'Buffer', 'Boolean', 'Mixed', 'Objectid', 'Array'],
+	    	enum: typeList,
 	    },
 	    field_widget: {
 	    	type: String,
@@ -160,6 +163,7 @@ module.exports = ($module) => {
 	.get(function() {
 	  return this._id + '-' + this.name_code;
 	});
-
+	
+	schemasSchema.plugin(vermongo, "squemas.history");  
   return $module.adapter.model('Squemas', schemasSchema);
 }
