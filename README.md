@@ -45,10 +45,17 @@ retalapp.run((app) => {
 
 ```
 
-So run 
+Start your MongoDB server in a new terminal tab, [more info about how to install Mongodb in your local](https://www.google.com/search?ei=-N5vWvmTG8yUjwPylLMo&q=install+mongodb+comuniti+edicion+in+my+local&oq=install+mongodb+comuniti+edicion+in+my+local&gs_l=psy-ab.3...18649.23805.0.24317.25.18.1.0.0.0.346.2107.2-7j1.8.0....0...1c.1.64.psy-ab..18.0.0....0.41PCvMFPOWE)
+
+```
+sudo mongod
+```
+
+and then run
 ```
 npm start
 ```
+
 
 Now you can open your localhost to test
 
